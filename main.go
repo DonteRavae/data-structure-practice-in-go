@@ -62,8 +62,10 @@ func main() {
 	// Binary Tree
 	fmt.Println("Binary Tree Example")
 	tree := binaryTree.Node{}
-	tree.Insert(656)
+	tree.Insert(2)
+	tree.Insert(1)
 	tree.Insert(3)
+	tree.Insert(656)
 	tree.Insert(60)
 	tree.Insert(89)
 	tree.Insert(22)
@@ -71,6 +73,8 @@ func main() {
 	tree.Insert(190)
 	tree.Insert(54)
 	tree.Insert(647)
+	fmt.Println(tree.Size())
 	// Print Tree
 	tree.PrintInOrder()
+	// tree.PrintLevelOrder()
 }

@@ -33,8 +33,8 @@ func (n *Node) Insert(val int) {
 }
 
 // Search method will take in a Data value and RETURN true if there is a node with that value
-func (n *Node) Search(val int) bool {
-	if n == nil {
+func (n Node) Search(val int) bool {
+	if n.Data == nil {
 		return false
 	}
 
@@ -49,8 +49,8 @@ func (n *Node) Search(val int) bool {
 	return true
 }
 
-func (n *Node) PrintInOrder() {
-	if n == nil {
+func (n Node) PrintInOrder() {
+	if n.Data == nil {
 		return
 	}
 	if n.Left != nil {
@@ -60,4 +60,42 @@ func (n *Node) PrintInOrder() {
 	if n.Right != nil {
 		n.Right.PrintInOrder()
 	}
+}
+
+func (n Node) PrintLevelOrder() {
+	if n.Data == nil {
+		return
+	}
+	queue := []Node{n}
+	for len(queue) > 0 {
+		node := queue[0]
+		if node.Left != nil {
+			queue = append(queue, *node.Left)
+		}
+		if node.Right != nil {
+			queue = append(queue, *node.Right)
+		}
+		queue = queue[1:]
+		fmt.Println(*node.Data)
+	}
+}
+
+func (n Node) Size() int {
+	if n.Data == nil {
+		return 0
+	}
+	var sum int
+	queue := []Node{n}
+	for len(queue) > 0 {
+		node := queue[0]
+		sum++
+		if node.Left != nil {
+			queue = append(queue, *node.Left)
+		}
+		if node.Right != nil {
+			queue = append(queue, *node.Right)
+		}
+		queue = queue[1:]
+	}
+	return sum
 }
