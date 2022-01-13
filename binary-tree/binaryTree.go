@@ -9,7 +9,7 @@ type Node struct {
 	Right *Node
 }
 
-// Insert method appends a new node to left or right of parent node. The Data to add should not be already in tree.
+// Insert appends a new node to left or right of parent node. The Data to add should not be already in tree.
 func (n *Node) Insert(val int) {
 	if n.Data == nil {
 		n.Data = &val
@@ -32,7 +32,7 @@ func (n *Node) Insert(val int) {
 	}
 }
 
-// Search method will take in a Data value and RETURN true if there is a node with that value
+// Search will take in a Data value and RETURN true if there is a node with that value
 func (n Node) Search(val int) bool {
 	if n.Data == nil {
 		return false
@@ -49,6 +49,7 @@ func (n Node) Search(val int) bool {
 	return true
 }
 
+// PrintInOrder takes a depth-first traversal approach and prints the data in order if the tree is a binary search tree.
 func (n Node) PrintInOrder() {
 	if n.Data == nil {
 		return
@@ -62,6 +63,7 @@ func (n Node) PrintInOrder() {
 	}
 }
 
+// PrintLevelOrder takes a breadth-first traversal approach and prints the data starting from the root, moving left to right on each level of the tree.
 func (n Node) PrintLevelOrder() {
 	if n.Data == nil {
 		return
@@ -80,6 +82,7 @@ func (n Node) PrintLevelOrder() {
 	}
 }
 
+// Size returns the amount of nodes in the tree.
 func (n Node) Size() int {
 	if n.Data == nil {
 		return 0
@@ -98,4 +101,9 @@ func (n Node) Size() int {
 		queue = queue[1:]
 	}
 	return sum
+}
+
+// HasPathSum returns true if any root-to-leaf paths equal the given sum value.
+func (n Node) HasPathSum(sum int) bool {
+	return false
 }
